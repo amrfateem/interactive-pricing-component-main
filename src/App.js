@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { ReactComponent as CheckSVG } from "./imgs/icon-check.svg";
+import { Switch, useDarkreader } from 'react-darkreader';
+
 
 
 
 function App() {
+  const [isDark, { toggle }] = useDarkreader(false);
 
   const [views, setViews] = useState(250);
   const [isMonthly, setIsMonthly] = useState(false);
@@ -27,6 +30,7 @@ function App() {
     <div className="h-screen text-center text-blue-100 dark:bg-blue-50 bg-pattern bg-no-repeat bg-10050">
       <div className="flex flex-col">
         <div className="my-8 align-middle bg-circles bg-no-repeat bg-center min-h-min flex flex-col justify-center h-40 sm:my-20">
+        <Switch className="m-auto" checked={isDark} onChange={toggle} />;
           <p className="z-10 text-2xl font-extrabold text-blue-200 mb-3 sm:text-4xl">
             Simple, traffic-based pricing
           </p>
