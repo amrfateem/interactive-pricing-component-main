@@ -6,15 +6,23 @@ import { Switch, useDarkreader } from 'react-darkreader';
 
 
 function App() {
+  //button toggle for darkmode
   const [isDark, { toggle }] = useDarkreader(false);
 
-  const [views, setViews] = useState(250);
-  const [isMonthly, setIsMonthly] = useState(false);
-
+  //button toggle for the yearly discount
   const onToggleClick = () => {
     setIsMonthly(!isMonthly);
-  };
+  };  
 
+  //default state is 250k views
+  const [views, setViews] = useState(250);
+
+  //adding the yearly billing discount
+  const [isMonthly, setIsMonthly] = useState(false);
+
+
+
+  //calculating the price depending on views
   const format = () => {
     let number = Math.floor(Math.sqrt(views * 12));
     if (isMonthly) number *= 0.75;
@@ -57,7 +65,7 @@ function App() {
                 <input
                   type="range"
                   min="1"
-                  max="500"
+                  max="500" //500k views max
                   className="slider transition w-full rounded-full opacity-70"
                   id="myRange"
                   value={views}
